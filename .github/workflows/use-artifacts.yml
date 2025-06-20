@@ -23,4 +23,4 @@ jobs:
           pattern: ${{ inputs.pattern }}
           run-id: ${{ inputs.run-id }}
           path: ./artifact
-      - run: mkdir out && rsync -r artifact/*/* out
+      - run: mkdir out && rsync -r artifact/*/* out && ls out
