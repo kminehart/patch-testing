@@ -3,9 +3,12 @@ name: Use artifacts
 on:
   workflow_call:
     inputs:
+      pattern:
+        type: string
+        required: false
       artifact:
         type: string
-        required: true
+        required: false
       run-id:
         type: string
         required: false
@@ -17,7 +20,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: ${{ inputs.artifact }}
+          pattern: ${{ inputs.pattern }}
           run-id: ${{ inputs.run-id }}
           path: ./artifact
       - run: ls -al artifact
