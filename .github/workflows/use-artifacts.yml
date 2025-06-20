@@ -1,0 +1,23 @@
+name: Use artifacts
+
+on:
+  workflow_call:
+    inputs:
+      artifact:
+        type: string
+        required: true
+      run-id:
+        type: string
+        required: false
+        default: ${{ github.run_id }}
+
+jobs:
+  use:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: ${{ inputs.artifact }}
+          run-id: ${{ inputs.run-id }}
+          path: ./artifact
+      - run: ls -al artifact
