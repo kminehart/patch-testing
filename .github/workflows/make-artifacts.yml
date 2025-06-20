@@ -29,6 +29,7 @@ jobs:
     uses: kminehart/patch-testing/.github/workflows/use-artifacts.yml@main
     with:
       run-id: ${{ github.run_id }}
+      artifacts: artifacts-*
     needs:
       - create
 
